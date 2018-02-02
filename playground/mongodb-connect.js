@@ -1,18 +1,5 @@
-// const MongoClient = require('mongodb').MongoClient;
 const {MongoClient, ObjectID} = require('mongodb');
-//The 2 above codes are the same.
 
-//with ObjectID we can create a object id variable like bellow
-// var objId = new ObjectID();
-// console.log(objId);
-// console.log(objId.getTimestamp());
-//After the port we use /TodoApp to specify the name of the db we want to connect to.
-//next a callback function 2 args an err and a db object which will use to read
-//write to dabase and more...
-//even thought we created a database it will not create untill we put some data
-//to it.
-
-//es6 destructuring making variable from object --
 var user = {name:'Alex',age:22};
 var {name} = user;
 console.log(name);
@@ -20,9 +7,9 @@ console.log(name);
 
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
   if(err){
-    return console.log('Unable to connect to MongoDb server');//To stop the app wee add return
+    return console.log('Unable to connect to MongoDb server');
   }
-  // Use the admin database for the operation
+
   const TodoAppDb = client.db('TodoApp');
   const Todos = TodoAppDb.collection('Todos');
   console.log('Conected to MongoDB server');

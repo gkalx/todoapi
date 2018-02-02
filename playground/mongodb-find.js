@@ -1,17 +1,15 @@
-// const MongoClient = require('mongodb').MongoClient;
+
 const {MongoClient, ObjectID} = require('mongodb');
 
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
   if(err){
-    return console.log('Unable to connect to MongoDb server');//To stop the app wee add return
+    return console.log('Unable to connect to MongoDb server');
   }
-  // Use the admin database for the operation
+
   const TodoAppDb = client.db('TodoApp');
   const Todos = TodoAppDb.collection('Todos');
   console.log('Conected to MongoDB server');
-  //to query only todos that are not completed just add {completed:false} to
-  //the find() function.
-  // Todos.find({completed: false}).toArray().then( (docs) => {
+
   Todos.find({_id: new ObjectID('5a71faf3d10d1f184c983801')}).toArray().then( (docs) => {
     console.log('Todos');
     console.log(JSON.stringify(docs, undefined, 2));
